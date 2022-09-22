@@ -1,0 +1,30 @@
+Protocol: Kerberos_PKINIT_setup
+# Just the first two steps of the Kerberos PKINIT
+# (sufficient for finding the attack)
+
+Types: Agent C,ath,g,s;
+       Number p,N1,N2,T0,T1,T2,Payload,tag;
+       Function pk,hash,sk;
+       Symmetric_key KCG,KCS,Ktemp,skag,skgs
+
+Knowledge: C: C,ath,g,s,pk(ath),pk(C),inv(pk(C)),hash,tag,pk,p;
+	   ath: C,ath,g,pk(C),pk(ath),inv(pk(ath)),hash,skag,tag,p
+
+where C!=ath
+
+Actions:
+
+C -> ath: {C,g,N1,exp(p,X),{T0,N1,hash(C,g,N1)}inv(pk(C))}pk(ath)
+
+ath -> C: C,
+	({|ath,C,g,KCG,T1|}skag),
+	(exp(p,Y)),
+        ({|g,KCG,T1,N1|}exp(exp(p,X),Y))
+
+Goals:
+KCG secret between C,ath
+exp(exp(p,X),Y) secret between C,ath
+C authenticates ath on exp(exp(p,X),Y)
+
+
+
