@@ -1,0 +1,10 @@
+
+<h1>Authentication Lab</h1>
+
+In the context of this lab, a short description of authentication in client/server applications is presented in order to help the reader understand the problem. In a client/server system, the goal is for the former to communicate with the latter. In this report we are going to address how these entities can establish and maintain a secure communication throughout the session. This is attained when the client can make authenticated requests to the server. 
+
+An issue that emerges here, is whether the communication protocol used among entities is secure enough to deter attacks. For example, using the unsafe http protocol in a client/server application gives chances for an intruder to interfere and intercept the messages being exchanged. In our client/print server system, the attacker could intercept messages (passwords, files etc.) sent from client to the server. Thus, integrity and confidentiality compromise entails in a non-secure application.
+
+In order to eliminate such ``man-in-the-middle'' attacks, a secure https protocol can be used. However, this would allow any benign client (even a malicious one) to use the services provided from the server. In other words, the server needs to accommodate a mechanism which allows only registered users to access and use its services.
+
+Our solution focuses on problems such as transmitting the passwords from the client in a cryptographic form, in order to avoid sending passwords in plain text. In our proposed client/print server system, the authentication of already authorized users takes place on the server's side. Clients that are enrolled in advance have their information stored in the database accessible by the server. These users are the only ones allowed to send files to be printed. After a client requests to log in, the server authenticates the user and upon successful completion it replies back with an access token. Essentially, this token allows the  to use the services provided by the server. Subjects of password storage, transport and verification are discussed in the following sections.

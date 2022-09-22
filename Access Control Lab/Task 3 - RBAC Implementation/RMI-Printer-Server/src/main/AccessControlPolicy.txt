@@ -1,0 +1,10 @@
+x Manager Janitor ServiceTech PowerUser User
+Print 1 0 0 1 1
+Queue 1 0 0 1 1
+TopQueue 1 0 0 1 0
+Start 1 1 0 0 0
+Stop 1 1 0 0 0
+Restart 1 1 0 1 0
+Status 1 0 1 0 0
+ReadConfig 1 0 1 0 0
+SetConfig 1 0 1 0 0
